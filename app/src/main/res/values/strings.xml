@@ -5,7 +5,5 @@
     <string name="menu_events">Events</string>
     <string name="menu_map">Map</string>
     <string name="str_btn">Open Popup Menu</string>
-    <string name="action1">Action1</string>
-    <string name="action2">Action2</string>
-    <string name="action3">Action3</string>
+
 </resources>
