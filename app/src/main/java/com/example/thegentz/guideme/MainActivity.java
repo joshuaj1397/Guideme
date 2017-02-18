@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.PopupMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.PopupMenu.OnMenuItemClickListener;
-import android.widget.Toast;
 
 
 class MyCalendar {
@@ -52,8 +52,19 @@ public class MainActivity extends Activity {
 
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(getBaseContext(), "You selected the action : " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                        return true;
+                        switch (item.getItemId()) {
+                            case R.id.menu_event:
+                                startEvents();
+                                return true;
+                            case R.id.menu_map:
+                                // start a map activity
+                                return true;
+                            case R.id.menu_about:
+                                sendMessage();
+                                return true;
+                            default:
+                                return false;
+                        }
                     }
                 });
 
@@ -101,29 +112,6 @@ public class MainActivity extends Activity {
             } while (l_managedCursor.moveToNext());
         }
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.menu_event:
-                getCalendars();
-                if (m_calendars.length > 1) {
-
-                }
-                else {
-
-                }
-                return true;
-            case R.id.menu_map:
-                // start a map activity
-                return true;
-            case R.id.menu_about:
-                sendMessage();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     /**
      * A native method that is implemented by the 'native-lib' native library,
@@ -133,7 +121,7 @@ public class MainActivity extends Activity {
 
     public void startEvents() {
         Intent intent = new Intent(MainActivity.this, EventsActivity.class);
-        startActivityForResult(intent, 0);
+        startActivity(intent);
     }
 }
 
