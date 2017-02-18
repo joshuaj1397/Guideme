@@ -76,10 +76,7 @@ public class MainActivity extends Activity {
 
         btn.setOnClickListener(listener);
     }
-    public void sendMessage() {
-        Intent intent = new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,6 +118,10 @@ public class MainActivity extends Activity {
 
     public void startEvents() {
         Intent intent = new Intent(MainActivity.this, EventsActivity.class);
+        startActivity(intent);
+    }
+    public void sendMessage() {
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 }
