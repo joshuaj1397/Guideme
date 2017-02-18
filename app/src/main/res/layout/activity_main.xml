@@ -10,4 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.thegentz.guideme.MainActivity">
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"
+        android:text="@string/str_btn"
+        android:gravity="top|left" />
 </RelativeLayout>

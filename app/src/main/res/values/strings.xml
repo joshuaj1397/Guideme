@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GuideMe</string>
+
+    <string name="menu_about">About</string>
+    <string name="menu_events">Events</string>
+    <string name="menu_map">Map</string>
+    <string name="str_btn">Open Popup Menu</string>
+
 </resources>

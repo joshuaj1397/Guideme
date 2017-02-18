@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <item android:id="@+id/menu_event"
+
+        android:title="@string/menu_events"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <item android:id="@+id/menu_map"
+        android:title="@string/menu_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <item android:id="@+id/menu_about"
+        android:title="@string/menu_about"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</menu>
