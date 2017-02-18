@@ -1,32 +1,55 @@
 package com.example.thegentz.guideme;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import com.google.api.services.calendar.Calendar;
-import com.google.api.services.calendar.model.CalendarList;
-import com.google.api.services.calendar.model.CalendarListEntry;
-import java.util.List;
+
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class CalendarListActivity extends AppCompatActivity {
+    public class CalendarContentResolver {
+        public final String[] FIELDS = {
+                CalendarContract.Calendars.NAME,
+                CalendarContract.Calendars.CALENDAR_DISPLAY_NAME
+        };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_list);
-        Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
-                .setApplicationName("Guide Me").build();
-        String pageToken = null;
-        do {
-            CalendarList calendarList = service.calendarList().list().setPageToken(pageToken).execute();
-            List<CalendarListEntry> items = calendarList.getItems();
+        public final Uri CALENDAR_URI = Uri.parse("content://com.android.calendar/calendars");
 
-            for (CalendarListEntry calendarListEntry : items) {
-                System.out.println(calendarListEntry.getSummary());
-                // Write all calendar titles to the screen and make them clickable buttons
+        ContentResolver contentResolver;
+        Set<String> calendars = new HashSet<String>();
 
-            }
-            pageToken = calendarList.getNextPageToken();
-        } while (pageToken != null);
+        public  CalendarContentResolver(Context ctx) {
+            contentResolver = ctx.getContentResolver();
+        }
 
+        public Set<String> getCalendars() {
+            // Fetch a list of all calendars sync'd with the device and their display names
+            Cursor cursor = contentResolver.query(CALENDAR_URI, FIELDS, null, null, null);
+            try {
+                if (cursor.getCount() > 0) {
+                    while (cursor.moveToNext()) {
+                        String name = cursor.getString(0);
+                        String displayName = cursor.getString(1);
+                        // This is actually a better pattern:
+                        String color = cursor.getString(cursor.getColumnIndex(CalendarContract.Calendars.CALENDAR_COLOR));
+                        Boolean selected = !cursor.getString(3).equals("0");
+                        calendars.add(displayName);
+                    }
+                }
+            } catch (AssertionError ex) {}
+
+            return calendars;
+        }
     }
 }
