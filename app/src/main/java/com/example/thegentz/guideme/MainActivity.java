@@ -1,4 +1,5 @@
 package com.example.thegentz.guideme;
+import android.content.Intent;
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
@@ -64,6 +65,10 @@ public class MainActivity extends Activity {
 
         btn.setOnClickListener(listener);
     }
+    public void sendMessage() {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,7 +107,7 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.menu_event:
                 getCalendars();
-                if (m_calendars.length() > 1) {
+                if (m_calendars.length > 1) {
                     // start a menu view activity
                 }
                 else {
@@ -113,7 +118,8 @@ public class MainActivity extends Activity {
                 // start a map activity
                 return true;
             case R.id.menu_about:
-                // start an about page activity
+                sendMessage();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -126,4 +132,4 @@ public class MainActivity extends Activity {
      */
     public native String stringFromJNI();
 }
-}
+
