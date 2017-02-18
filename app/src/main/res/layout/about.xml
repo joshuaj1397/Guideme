@@ -25,8 +25,9 @@
         android:text="@string/abouttext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/abouttext" />
+        android:id="@+id/abouttext"
+        android:fontFamily="sans-serif"
+        android:layout_alignTop="@+id/logo"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
