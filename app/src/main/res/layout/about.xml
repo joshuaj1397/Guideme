@@ -22,11 +22,69 @@
         android:id="@+id/logo" />-->
 
     <TextView
-        android:text="@string/abouttext"
+        android:text="Android Version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/abouttext" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="189dp"
+        android:id="@+id/Text1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="1.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Text1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/version" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/version"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="Guideme is a GPS app that can also be used to navigate inside dense areas to find particular spots. It incorportaes Google calender to direct users to the exact location of their event. It uses a compass to guide users to the specific locations. Guideme uses metadat from users to continually update the map of particularly dense areas. It' basically an interactive extension of Google Maps aimed particularly to smoothen the procedure of finding your desired location ot the dot."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/description" />
+
+    <TextView
+        android:text="Developers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView3"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="Joshua Johnson, Mushfique Ahmed and Christopher Thomas Phelan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Devs" />
+
+    <TextView
+        android:text="Texas Tech University"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Devs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Devs-uni" />
 </RelativeLayout>

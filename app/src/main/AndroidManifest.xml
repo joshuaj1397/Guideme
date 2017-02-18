@@ -34,17 +34,10 @@
             android:label="@string/title_activity_events_activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.Events"/>
+                <action android:name="android.intent.action.Events" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AboutActivity"
-            android:label="@string/title_activity_events_activity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.Events"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".CalendarListActivity"></activity>
     </application>
 
 </manifest>
