@@ -30,9 +30,13 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".events_activity"
+            android:name=".EventsActivity"
             android:label="@string/title_activity_events_activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.Events"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

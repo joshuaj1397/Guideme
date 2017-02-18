@@ -108,10 +108,10 @@ public class MainActivity extends Activity {
             case R.id.menu_event:
                 getCalendars();
                 if (m_calendars.length > 1) {
-                    // start a menu view activity
+
                 }
                 else {
-                    // start a event view activity
+
                 }
                 return true;
             case R.id.menu_map:
@@ -119,7 +119,6 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.menu_about:
                 sendMessage();
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -131,5 +130,10 @@ public class MainActivity extends Activity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+
+    public void startEvents() {
+        Intent intent = new Intent(MainActivity.this, EventsActivity.class);
+        startActivityForResult(intent, 0);
+    }
 }
 
