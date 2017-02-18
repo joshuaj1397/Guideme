@@ -5,6 +5,8 @@
     <string name="menu_events">Events</string>
     <string name="menu_map">Map</string>
     <string name="str_btn">Open Popup Menu</string>
+    <string name="title_activity_events_activity">Events List</string>
+    <string name="action_settings">Settings</string>
     <string name="abouttext">This is an &lt;u>underline&lt;/u>.</string>
 
 </resources>
