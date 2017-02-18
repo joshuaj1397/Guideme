@@ -61,4 +61,34 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_event:
+                getCalendars();
+                if (m_calendars.length() > 1) {
+                    // start a menu view activity
+                }
+                else {
+                    // start a event view activity
+                }
+                return true;
+            case R.id.menu_map:
+                // start a map activity
+                return true;
+            case R.id.menu_about:
+                // start an about page activity
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * A native method that is implemented by the 'native-lib' native library,
+     * which is packaged with this application.
+     */
+    public native String stringFromJNI();
+}
 }
