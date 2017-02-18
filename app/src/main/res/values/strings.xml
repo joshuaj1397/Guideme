@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GuideMe</string>
+    <string name="descr_overflow_button">stdbtn</string>
 </resources>
