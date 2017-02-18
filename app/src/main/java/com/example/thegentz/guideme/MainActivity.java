@@ -1,11 +1,10 @@
 package com.example.thegentz.guideme;
-import android.app.Activity;
 import android.content.Intent;
+import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,13 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 class MyCalendar {
@@ -37,12 +29,6 @@ class MyCalendar {
 }
 
 public class MainActivity extends Activity {
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,9 +64,10 @@ public class MainActivity extends Activity {
         };
 
         btn.setOnClickListener(listener);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+    public void sendMessage() {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -88,13 +75,11 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
     private MyCalendar m_calendars[];
-
     private void getCalendars() {
         String[] l_projection = new String[]{"_id", "displayName"};
         Uri l_calendars;
-        if (Build.VERSION.SDK_INT >= 8) {
+        if (Build.VERSION.SDK_INT >= 8 ) {
             l_calendars = Uri.parse("content://com.android.calendar/calendars");
         } else {
             l_calendars = Uri.parse("content://calendar/calendars");
@@ -116,7 +101,6 @@ public class MainActivity extends Activity {
             } while (l_managedCursor.moveToNext());
         }
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -124,16 +108,18 @@ public class MainActivity extends Activity {
             case R.id.menu_event:
                 getCalendars();
                 if (m_calendars.length > 1) {
-
-                } else {
-                    startEvents();
+                    // start a menu view activity
+                }
+                else {
+                    // start a event view activity
                 }
                 return true;
             case R.id.menu_map:
                 // start a map activity
                 return true;
             case R.id.menu_about:
-                // start an about page activity
+                sendMessage();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -145,9 +131,5 @@ public class MainActivity extends Activity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
-
-    public void startEvents() {
-        Intent intent = new Intent(this, events_activity.class);
-        startActivity(intent);
-    }
 }
+
